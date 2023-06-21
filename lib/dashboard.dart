@@ -1,3 +1,4 @@
+import 'package:dash_flutter/burger.dart';
 import 'package:dash_flutter/food.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,8 +48,7 @@ class _DashBoardPageState extends State<DashBoardPage>
                     shape: BoxShape.circle,
                     image: DecorationImage(
                         image: AssetImage('lib/assets/images/tuxedo.png'),
-                        fit: BoxFit.contain
-                        )),
+                        fit: BoxFit.contain)),
               )
             ],
           ),
@@ -149,8 +149,6 @@ class _DashBoardPageState extends State<DashBoardPage>
           child: TabBarView(
             children: [
               FoodTap(),
-                   
-
             ],
             controller: tabController,
           ),
@@ -164,7 +162,14 @@ class _DashBoardPageState extends State<DashBoardPage>
     return Padding(
       padding: EdgeInsets.only(left: 15),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => Burger(
+                  imgPath: imgpath,
+                  foodName: foodName,
+                  pricePerItem: price,
+                  heroTag: foodName)));
+        },
         child: Container(
           height: 175,
           width: 150,
